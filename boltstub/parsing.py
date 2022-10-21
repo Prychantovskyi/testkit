@@ -140,7 +140,8 @@ class BangLine(Line):
                     obj,
                     "invalid argument for handshake, must be list of 2-digit "
                     "hex encoded bytes, whitespace is ignored (e.g. "
-                    "'HANDSHAKE 00 FF 02 04 F0'")
+                    "'HANDSHAKE 00 FF 02 04 F0'"
+                )
             obj._arg = bytearray(int(b, 16) for b in wrap(arg, 2))
         else:
             raise LineError(obj, 'unsupported Bang line: "{}"'.format(obj))
@@ -184,7 +185,7 @@ class BangLine(Line):
             )
 
 
-class MessageLine(Line, abc.ABC):
+class MessageLine(Line):
     allow_jolt_wildcard = False
     always_parse = True
 
